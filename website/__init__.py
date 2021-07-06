@@ -1,5 +1,6 @@
 from flask import Flask
 from .views import views
+from .api import api_bp
 from .auth import auth
 from flask_sqlalchemy import SQLAlchemy
 from os import path
@@ -26,6 +27,7 @@ def create_app():
 
     app.register_blueprint(views, url_prefix="/")
     app.register_blueprint(auth, url_prefix="/auth/")
+    app.register_blueprint(api_bp, url_prefix="/api")
 
     from .models import User, Note
 
